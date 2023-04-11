@@ -1,7 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { LoginUserDto } from './dto/login-user.tdo';
+import { Usuarios } from './Schema/users.schema';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('user')
 export class UserController {
@@ -10,6 +22,17 @@ export class UserController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post('login')
+  loginUser(@Body() userObjectLogin: LoginUserDto) {
+    return this.userService.login(userObjectLogin);
+  }
+
+  //@UseGuards(AuthGuard('AdminCli'))
+  @Get('/psicologos')
+  obtenerPsicologos() {
+    return this.userService.obtenerPsicologos();
   }
 
   @Get()
