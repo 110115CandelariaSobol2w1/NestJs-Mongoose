@@ -51,6 +51,10 @@ export class MascotasService {
     });
   }
 
+  async getPetById(id: string){
+    return await this.mascotaModule.findOne({_id: id})
+  }
+
   async findAll(): Promise<Mascotas[]> {
     return await this.mascotaModule.find().exec();
   }

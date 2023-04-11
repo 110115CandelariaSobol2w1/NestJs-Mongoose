@@ -29,7 +29,7 @@ export class UserController {
     return this.userService.login(userObjectLogin);
   }
 
-  //@UseGuards(AuthGuard('AdminCli'))
+  @UseGuards(AuthGuard('AdminPsico'))
   @Get('/psicologos')
   obtenerPsicologos() {
     return this.userService.obtenerPsicologos();

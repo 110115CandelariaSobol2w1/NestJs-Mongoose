@@ -6,6 +6,9 @@ import { Usuarios, userSchema } from './Schema/users.schema';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './jwt/jwt.constants';
 import { adminCliStrategy} from './jwt/admin-cli.strategy';
+import { psicologoAdminStrategy } from './jwt/admin-psico.strategy';
+import { MascotasService } from 'src/mascotas/mascotas.service';
+import { MascotasModule } from 'src/mascotas/mascotas.module';
 
 @Module({
   imports: [
@@ -18,9 +21,9 @@ import { adminCliStrategy} from './jwt/admin-cli.strategy';
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: {expiresIn: '20h'},
-    })
+    }),
   ],
   controllers: [UserController],
-  providers: [UserService, adminCliStrategy]
+  providers: [UserService, adminCliStrategy,psicologoAdminStrategy]
 })
 export class UserModule {}

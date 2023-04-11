@@ -187,7 +187,7 @@ export class TurnosService {
     );
   }
 
-  //6- Ver informacion de la mascota con sus turnos e historial
+  //6- Ver informacion de la mascota con sus turnos e historial LISTO
   async infoMascotas(idMascota:string){
     console.log(idMascota);
     return await this.historiaModule.findOne({id_mascota: idMascota})
