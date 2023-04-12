@@ -6,9 +6,14 @@ import { UserModule } from './user/user.module';
 import { MascotasModule } from './mascotas/mascotas.module';
 import { TurnosModule } from './turnos/turnos.module';
 import { HistorialModule } from './historial/historial.module';
+import { SoapModule } from 'nestjs-soap';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://candelariasobol:8denoviembre@mongodb101.hkeu0q5.mongodb.net/test'), UserModule, MascotasModule, TurnosModule, HistorialModule],
+  imports: [
+    SoapModule.register(
+      { clientName: 'MY_SOAP_CLIENT', uri: 'https://www.dataaccess.com/webservicesserver/NumberConversion.wso?wsdl' },
+    ),
+    MongooseModule.forRoot('mongodb+srv://candelariasobol:8denoviembre@mongodb101.hkeu0q5.mongodb.net/test'), UserModule, MascotasModule, TurnosModule, HistorialModule],
   controllers: [AppController],
   providers: [AppService],
 })
