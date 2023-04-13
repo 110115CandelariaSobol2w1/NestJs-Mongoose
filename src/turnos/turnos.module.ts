@@ -9,6 +9,7 @@ import { HistoriaClinica, HistoriaSchema } from 'src/historial/schema/historia.s
 import { Mascotas, mascotaSchema } from 'src/mascotas/schema/mascotas.schema';
 import { adminCliStrategy } from 'src/user/jwt/admin-cli.strategy';
 import { psicologoAdminStrategy } from 'src/user/jwt/admin-psico.strategy';
+import { MascotasService } from 'src/mascotas/mascotas.service';
 
 @Module({
   imports:[
@@ -29,6 +30,6 @@ import { psicologoAdminStrategy } from 'src/user/jwt/admin-psico.strategy';
     HistorialModule
   ],
   controllers: [TurnosController],
-  providers: [TurnosService,adminCliStrategy,psicologoAdminStrategy]
+  providers: [TurnosService,adminCliStrategy,psicologoAdminStrategy, MascotasService]
 })
 export class TurnosModule {}

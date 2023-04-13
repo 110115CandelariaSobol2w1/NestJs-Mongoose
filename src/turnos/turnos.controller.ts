@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { TurnosService } from './turnos.service';
 import { CreateTurnoDto } from './dto/create-turno.dto';
@@ -25,6 +26,7 @@ export class TurnosController {
   //   return this.turnosService.nuevoTurno(createTurnoDto);
   // }
 
+  @UseGuards(AuthGuard('AdminCli'))
   @Post('/prueba')
   crearTurnoPrueba(@Body() turno: CreateTurnoDto) {
     return this.turnosService.nuevoTurno(turno);
@@ -50,6 +52,7 @@ export class TurnosController {
   }
 
   //6 - ver info mascota
+  @UseGuards(AuthGuard('AdminCli'))
   @Get('/info/:idMascota')
   infoMascota(@Param('idMascota') idMascota: string) {
     return this.turnosService.infoMascotas(idMascota);
