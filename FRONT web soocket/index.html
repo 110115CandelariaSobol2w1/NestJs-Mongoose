@@ -29,6 +29,7 @@
             padding: 0.5rem 1 rem;
         }
 
+        /*Diferenciamos los mensajes de los usuarios*/
         ul>li:nth-child(odd){
             background: #dcf8c6;
             text-align: right;
@@ -56,12 +57,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
 
     <script>
+        //Conexion con el servidor 
         const socket = io('http://localhost:3000');
 
+        //referenciamos los elementos del dom 
        const form = document.querySelector('form');
        const input = document.querySelector('input');
        let mensajes = document.querySelector('#mensajes');
 
+        //Enviamos el mensaje ingresado por el usuario al servidor
        form.addEventListener('submit', (e) =>{
         e.preventDefault()
         if(input.value){
@@ -70,6 +74,7 @@
         }
        })
 
+       //Cuando recibimos el mensaje nuevo desde el servidor lo agregamos a la lista 
        socket.on('onMessage', (message) =>{
         let item = document.createElement('li')
         console.log(message);
